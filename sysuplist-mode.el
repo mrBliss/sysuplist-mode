@@ -90,7 +90,7 @@
 ;; Make sure to place `sysuplist-mode.el` somewhere in the load-path
 ;; and add the following lines to your `.emacs` file:
 ;;
-;;     (autoload 'sysuplsit-mode "sysuplist-mode.el"
+;;     (autoload 'sysuplist-mode "sysuplist-mode.el"
 ;;        "Major mode for selection Yaourt updates" t)
 
 
