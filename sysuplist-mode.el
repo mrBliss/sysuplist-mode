@@ -65,7 +65,7 @@
 ;; The headers indicating new sections are made read-only (via
 ;; text-properties).  For an example of a header, see (1) in the
 ;; snippet above.  The user is not supposed to type any text in the
-;; sysuplist file except for the `#'s.  For this reason, the whole
+;; sysuplist file except for the `#`s.  For this reason, the whole
 ;; buffer is made read-only.  But this can be turned off (and on
 ;; again) with \\[toggle-read-only].
 ;;
@@ -105,11 +105,11 @@
 ;; Open a sysuplist file and be greeted with colours and welcome
 ;; whitespace.  Users should only use the following bindings:
 ;;
-;;   * Move between items with `n' and `p'.
-;;   * Move between sections with `N' and `P`.
-;;   * Mark an item with `m' and remove the mark with `u'.
-;;   * Toggle an item between marked an unmarked with `t'.
-;;   * Toggle all items with `T': marked items become unmarked, and vice
+;;   * Move between items with `n` and `p`.
+;;   * Move between sections with `N` and `P`.
+;;   * Mark an item with `m` and remove the mark with `u`.
+;;   * Toggle an item between marked an unmarked with `t`.
+;;   * Toggle all items with `T`: marked items become unmarked, and vice
 ;;     versa.
 
 ;;; Bugs:
