@@ -190,10 +190,10 @@ Headers are skipped.  When the end is reached, the point will
 remain on the same item."
   (interactive)
   (when (looking-at (concat "^\\(#\s-*\\)?" sysuplist-repo-regexp))
-    (next-line))
+    (forward-line))
   (if (ignore-errors (re-search-forward sysuplist-repo-regexp))
       (progn (beginning-of-line) t)
-    (previous-line)))
+    (forward-line -1)))
 
 
 (defun sysuplist-prev-item ()
@@ -242,7 +242,7 @@ Unmarking means 'commenting out'.  If the point is between two
 items, the item above is chosen.  Returns nil when the unmarked
 item was the last of the file."
   (interactive)
-  (next-line)
+  (forward-line)
   (ignore-errors
     (re-search-backward (concat "^\\(#\s-*\\)?" sysuplist-repo-regexp)))
   (beginning-of-line)
@@ -250,7 +250,7 @@ item was the last of the file."
   (when (not (looking-at " *#+ *"))
     (insert "# "))
   (setq buffer-read-only t)
-  (next-line)
+  (forward-line)
   (prog1
       (sysuplist-next-item)
     (beginning-of-line)))
@@ -262,7 +262,7 @@ Marking means 'making sure the item is not commented out'.  If
 the point is between two items, the item above is chosen.
 Returns nil when the unmarked item was the last of the file."
   (interactive)
-  (next-line)
+  (forward-line)
   (ignore-errors
     (re-search-backward (concat "^\\(#\s-*\\)?" sysuplist-repo-regexp)))
   (beginning-of-line)
@@ -280,7 +280,7 @@ Moves to the next item.  If the point is between two items, the
 item above is chosen.  Returns nil when the toggled item was the
 last of the file."
   (interactive)
-  (next-line)
+  (forward-line)
   (ignore-errors
     (re-search-backward (concat "^\\(#\s-*\\)?" sysuplist-repo-regexp)))
   (beginning-of-line)
@@ -289,7 +289,7 @@ last of the file."
       (while (looking-at "[ #]")
         (delete-char 1))
     (insert "# ")
-    (next-line))
+    (forward-line))
   (setq buffer-read-only t)
   (prog1
       (sysuplist-next-item)
@@ -301,7 +301,7 @@ last of the file."
 The point doesn't move."
   (interactive)
   (save-excursion
-    (beginning-of-buffer)
+    (goto-char (point-min))
     (sysuplist-next-item)
     (while (sysuplist-mark-item))))
 
@@ -311,7 +311,7 @@ The point doesn't move."
 The point doesn't move."
   (interactive)
   (save-excursion
-    (beginning-of-buffer)
+    (goto-char (point-min))
     (sysuplist-next-item)
     (while (sysuplist-unmark-item))))
 
@@ -322,7 +322,7 @@ Marked items become unmarked, and vice versa.  Toggling is done
 with `sysuplist-toggle-item'.  The point doesn't move."
   (interactive)
   (save-excursion
-    (beginning-of-buffer)
+    (goto-char (point-min))
     (sysuplist-next-item)
     (while (sysuplist-toggle-item))))
 
@@ -336,12 +336,12 @@ With the aim of avoiding confusion as to whether a description of
 a package belongs to the package above or below it.  This means
 the file is modified right after the user opens it."
   (save-excursion
-    (beginning-of-buffer)
+    (goto-char (point-min))
     (while
         (ignore-errors (re-search-forward (concat "^" sysuplist-repo-regexp)))
       (beginning-of-line)
       (insert-char 10 1)
-      (next-line))))
+      (forward-line))))
 
 (defun sysuplist-make-headers-read-only ()
   "Make sure the headers are read-only.
@@ -353,7 +353,7 @@ easily be turned off by the user."
     (while (ignore-errors (re-search-forward "#\\{153\\}"))
       (beginning-of-line)
       (let ((b (point)))
-        (next-line 2)
+        (forward-line 2)
         (end-of-line)
         (add-text-properties b (point) '(read-only t))))))
 
