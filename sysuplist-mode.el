@@ -378,7 +378,7 @@ easily be turned off by the user."
 
 
 ;;;###autoload
-(add-to-list 'auto-mode-alist '("sysuplist" . sysuplist-mode))
+(add-to-list 'auto-mode-alist '("sysuplist$" . sysuplist-mode))
 
 
 (provide 'sysuplist-mode)
