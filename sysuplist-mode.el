@@ -92,6 +92,7 @@
 ;;
 ;;     (autoload 'sysuplist-mode "sysuplist-mode.el"
 ;;        "Major mode for selection Yaourt updates" t)
+;;     (add-to-list 'auto-mode-alist '("sysuplist$" . sysuplist-mode))
 
 
 ;;; Customization:
@@ -391,10 +392,6 @@ easily be turned off by the user."
   (sysuplist-make-headers-read-only)
   (setq buffer-read-only t)
   (run-mode-hooks 'sysuplist-mode-hook))
-
-
-;;;###autoload
-(add-to-list 'auto-mode-alist '("sysuplist$" . sysuplist-mode))
 
 
 (provide 'sysuplist-mode)
