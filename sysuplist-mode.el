@@ -111,6 +111,8 @@
 ;;   * Toggle an item between marked an unmarked with `t`.
 ;;   * Toggle all items with `T`: marked items become unmarked, and vice
 ;;     versa.
+;;   * Save and quit with `q`. Only kills the frame when using
+;;     emacsclient.
 
 ;;; Bugs:
 
@@ -162,6 +164,7 @@ repositories, including a trailing '/'.")
       (define-key map (kbd "p") 'sysuplist-prev-item)
       (define-key map (kbd "N") 'sysuplist-next-section)
       (define-key map (kbd "P") 'sysuplist-prev-section)
+      (define-key map (kbd "q") 'sysuplist-save-and-quit)
       map))
   "Keymap for the sysuplist major mode.")
 
@@ -325,6 +328,19 @@ with `sysuplist-toggle-item'.  The point doesn't move."
     (goto-char (point-min))
     (sysuplist-next-item)
     (while (sysuplist-toggle-item))))
+
+
+(defun sysuplist-save-and-quit ()
+  "Offer to save the file and quit.
+The current buffer is saved. When using emacslient, the current
+frame is deleted, otherwise `save-buffers-kill-emacs' is
+executed."
+  (interactive)
+  (when (yes-or-no-p (format "Save %s and quit? " (buffer-name)))
+    (save-buffer)
+    (if (frame-parameter (selected-frame) 'client)
+        (delete-frame)
+      (save-buffers-kill-emacs))))
 
 
 
