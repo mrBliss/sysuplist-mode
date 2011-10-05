@@ -5,7 +5,7 @@
 ;; Author: Thomas Winant <dewinant@gmail.com>
 ;; Maintainer: Thomas Winant <dewinant@gmail.com>
 ;; Created: Sep 30, 2011
-;; Version: 0.1
+;; Version: 0.2
 ;; Keywords: yaourt, sysuplist, arch linux
 
 ;; This file is not part of GNU Emacs.
