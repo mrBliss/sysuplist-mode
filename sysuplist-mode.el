@@ -140,7 +140,7 @@ non-nil, the roles are switched.  This variable only affects the
 key bindings.")
 
 (defvar sysuplist-repo-regexp
-  "\\(extra\\|aur\\|co\\(re\\|mmunity\\)\\)/"
+  "\\(extra\\|aur\\|multilib\\|co\\(re\\|mmunity\\)\\)/"
   "A regular expression that matches the names of the
 repositories, including a trailing '/'.")
 
